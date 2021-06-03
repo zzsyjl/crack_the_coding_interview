@@ -1,6 +1,0 @@
-当我们建了一个空文件夹时，这里并没有显示untracked，但是在这个文件夹中搞了一个文件之后，就出来
-了。
-
-再试试别的？
-
-也就是说，这里的changes是针对staged区的，而staged changes当然也是针对commited的了
