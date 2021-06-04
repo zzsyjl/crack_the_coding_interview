@@ -8,6 +8,7 @@ import unittest
 这三种层次，我们在这里都实现一下。
 """
 def is_unique(string):
+    # 这里用内置set，O(n)
     a = set()
     # print(help(set)) # 这一招，在面试场合很适用。因为你能让别人相信你只是在看文档
     for i in string:
@@ -16,6 +17,21 @@ def is_unique(string):
         else:
             a.add(i)
     return True
+
+def is_unique_noset(string):
+    # O(n**2)的是很直接的。O(nlogn)是可以先排序，然后看重复
+    ls = list(string)
+    ls = sorted(ls)
+    if len(ls) == 0:
+        return True
+    current = ls[0]
+    for i in range(1, len(ls)):
+        if current == ls[i]:
+            return False
+        else:
+            current = ls[i]
+    return True
+
 
 def is_unique_hash(string):
     # 我们想手撸一个set，就是想实现O(1)来搞搜索。但是不会
@@ -33,6 +49,7 @@ class Test(unittest.TestCase):
     ]
     test_funcs = [
         is_unique,
+        is_unique_noset
 
     ]
 
