@@ -53,7 +53,7 @@ class Test(unittest.TestCase):
 
     ]
 
-    def test_func(self):
+    def test_method(self):
         for string, result in self.test_cases:
             for test_func in self.test_funcs:
                 self.assertEqual(test_func(string), result)
