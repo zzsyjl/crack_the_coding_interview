@@ -17,7 +17,10 @@ def is_unique(string):
             a.add(i)
     return True
 
-# def is_unique_hash(string):
+def is_unique_hash(string):
+    # 我们想手撸一个set，就是想实现O(1)来搞搜索。但是不会
+    pass
+
 
 
 
