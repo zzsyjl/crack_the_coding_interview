@@ -35,6 +35,8 @@ class Test(unittest.TestCase):
     ]
 
     def test_method(self):
+        assert self.test_cases != []
+        assert self.test_funcs != []
         for arguments, result in self.test_cases:
             for test_func in self.test_funcs:
                 self.assertEqual(test_func(*arguments), result)
