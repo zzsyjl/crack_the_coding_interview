@@ -42,10 +42,10 @@ def is_unique_hash(string):
 
 class Test(unittest.TestCase):
     test_cases = [
-        ("abcd", True),
-        ("s4fad", True),
-        ("", True),
-        ("23ds2", False),
+        (("abcd",), True),
+        (("s4fad",), True),
+        (("",), True),
+        (("23ds2",), False),
     ]
     test_funcs = [
         is_unique,
@@ -54,9 +54,9 @@ class Test(unittest.TestCase):
     ]
 
     def test_method(self):
-        for string, result in self.test_cases:
+        for arguments, result in self.test_cases:
             for test_func in self.test_funcs:
-                self.assertEqual(test_func(string), result)
+                self.assertEqual(test_func(*arguments), result)
 
 if __name__ == "__main__":
     unittest.main()
