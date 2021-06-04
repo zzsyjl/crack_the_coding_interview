@@ -8,6 +8,7 @@ MxN矩阵, 将0元素的行和列都清零.
 """
 import numpy as np
 def zero_matrix(matrix):
+    pass
 
 
 
