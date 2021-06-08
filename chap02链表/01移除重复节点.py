@@ -11,6 +11,8 @@ from linked_list import LinkedList
 def remove_duplicate(ori_ll):
     seen = set()
     pointer = ori_ll.head
+    if pointer == None:
+        return str(ori_ll)
     seen.add(pointer.value)
     next_pointer = pointer.next
     while next_pointer:
@@ -25,10 +27,14 @@ def remove_duplicate(ori_ll):
     return str(ori_ll)
 
 class Test(unittest.TestCase):
-    a = LinkedList([1, 2, 3])
-    b = LinkedList([1, 1, 2, 2, 3])
+    a1 = LinkedList([1, 1, 2, 2, 3])
+    a2 = LinkedList([1, 2, 3])
+    b1 = LinkedList()
+    b2 = LinkedList()
+
     test_cases = [
-        [[b], str(a)]
+        [[a1], str(a2)],
+        [[b1], str(b2)]
     ]
     test_funcs = [
         remove_duplicate
