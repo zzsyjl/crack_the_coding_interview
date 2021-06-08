@@ -1,4 +1,6 @@
 import unittest
+
+# from chap02链表.linked_list import LinkedList
 from linked_list import LinkedList
 """
 删除未排序链表中的重复节点
@@ -16,6 +18,7 @@ from linked_list import LinkedList
 问: 如何判断两个节点是否是同一个呢?
 答: 用is?
 """
+
 
 def remove_duplicate(ori_ll):
     seen = set()
@@ -36,13 +39,14 @@ def remove_duplicate(ori_ll):
     ori_ll.tail = pointer
     return str(ori_ll)
 
+
 def remove_duplicate_followup(ori_ll):
-    # pointer和nextpointer体系, 只能是删除nextpointer了. 
+    # pointer和nextpointer体系, 只能是删除nextpointer了. 发送旅客大幅拉升剪短发啦手机丢了卡就是对方离开撒到家阿斯顿咖啡呢
     pointer = ori_ll.head
     if pointer == None:
         return str(ori_ll)
     next_pointer = pointer.next
-    while next_pointer: 
+    while next_pointer:
         # 要从头开始, 循环到pointer, 判断是否与next_pointer的值相同
         runner = ori_ll.head
         is_dup = False
@@ -60,7 +64,6 @@ def remove_duplicate_followup(ori_ll):
             next_pointer = pointer.next
     ori_ll.tail = pointer
     return str(ori_ll)
-        
 
 
 class Test(unittest.TestCase):
@@ -84,6 +87,7 @@ class Test(unittest.TestCase):
         for arguments, result in self.test_cases:
             for test_func in self.test_funcs:
                 self.assertEqual(test_func(*arguments), result)
+
 
 if __name__ == "__main__":
     unittest.main()
