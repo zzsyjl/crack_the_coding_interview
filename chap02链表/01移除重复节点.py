@@ -24,6 +24,7 @@ def remove_duplicate(ori_ll):
             pointer = next_pointer
             next_pointer = pointer.next
             seen.add(pointer.value)
+    ori_ll.tail = pointer
     return str(ori_ll)
 
 class Test(unittest.TestCase):
