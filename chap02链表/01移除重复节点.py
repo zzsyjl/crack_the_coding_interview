@@ -1,7 +1,7 @@
 import unittest
 
-# from chap02链表.linked_list import LinkedList
-from linked_list import LinkedList
+from chap02链表.linked_list import LinkedList
+
 """
 删除未排序链表中的重复节点
 思路:
@@ -90,4 +90,6 @@ class Test(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    # unittest.main()
+    import sys
+    print(sys.path)
