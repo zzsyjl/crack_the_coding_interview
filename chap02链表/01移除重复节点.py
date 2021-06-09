@@ -1,6 +1,6 @@
 import unittest
 
-from chap02链表.linked_list import LinkedList
+from linked_list import LinkedList
 
 """
 删除未排序链表中的重复节点
