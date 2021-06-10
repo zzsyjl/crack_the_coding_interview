@@ -4,9 +4,13 @@ import unittest
 思路:
 队列就要满足先进先出, 一定要让最早压栈的跑到另一个栈的栈顶. 那么入队就是正常的入栈, 
 出队时则要全都到另一个栈, 然后出栈即可出队了.
+进阶:
+我第一次的想法, 是work的. 但是如果add和remove交替进行的话, 效率非常低. 在test时看了
+标准答案的思路, 很好! remove时, stack空了之后做一次倒腾. 然后add加addstack上, remove
+操作在remove stack上.
 """
 
-class MyQueue:
+class MyQueue_obsolete:
     def __init__(self) -> None:
         self.add_stack = []
         self.remove_stack = []
@@ -37,6 +41,35 @@ class MyQueue:
 
     def __len__(self):
         return len(self.add_stack) + len(self.remove_stack)
+
+
+class MyQueue:
+    def __init__(self) -> None:
+        self.add_stack = []
+        self.remove_stack = []
+
+    def add(self, item):
+        self.add_stack.append(item)
+
+    def __len__(self):
+        return len(self.add_stack) + len(self.remove_stack)
+
+    def remove(self):
+        if len(self) == 0:
+            return None
+        if len(self.remove_stack) == 0:
+            for _ in range(len(self.add_stack)):
+                self.remove_stack.append(self.add_stack.pop())
+        return self.remove_stack.pop()
+
+    def peek(self):
+        if len(self) == 0:
+            return None
+        if len(self.remove_stack) == 0:
+            for _ in range(len(self.add_stack)):
+                self.remove_stack.append(self.add_stack.pop())
+        return self.remove_stack[-1]
+
 
 class Test(unittest.TestCase):
     test_cases = [
