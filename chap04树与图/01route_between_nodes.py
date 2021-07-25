@@ -24,7 +24,7 @@ graph = {
 """
 
 def has_route_bfs(graph, node_a, node_b):
-	deque_1 = deque(graph[node_a])
+	deque_1 = deque([node_a])
 	visited = {node_a}
 	if node_b in deque_1:
 		return True
@@ -48,19 +48,48 @@ def has_route_bfs(graph, node_a, node_b):
 
 
 class Test(unittest.TestCase):
-	test_cases = [
 
-	]
-	test_funcs = [
-		# is_permutation
-	]
+    graph = {
+        "A": ["B", "C"],
+        "B": ["D"],
+        "C": ["D", "E"],
+        "D": ["B", "C"],
+        "E": ["C", "F"],
+        "F": ["E", "O", "I", "G"],
+        "G": ["F", "H"],
+        "H": ["G"],
+        "I": ["F", "J"],
+        "O": ["F"],
+        "J": ["K", "L", "I"],
+        "K": ["J"],
+        "L": ["J"],
+        "P": ["Q", "R"],
+        "Q": ["P", "R"],
+        "R": ["P", "Q"],
+    }
 
-	def test_method(self):
-		assert self.test_cases != []
-		assert self.test_funcs != []
-		for arguments, result in self.test_cases:
-			for test_func in self.test_funcs:
-				self.assertEqual(test_func(*arguments), result)
+    tests = [
+        ("A", "L", True),
+		("A", "A", True),
+        ("A", "B", True),
+        ("H", "K", True),
+        ("L", "D", True),
+        ("P", "Q", True),
+        ("Q", "P", True),
+        ("Q", "G", False),
+        ("R", "A", False),
+        ("P", "B", False),
+    ]
+
+    # def test_is_route(self):
+    #     for [start, end, expected] in self.tests:
+    #         actual = is_route(self.graph, start, end)
+    #         assert actual == expected
+
+    def test_is_route_bfs(self):
+        for [start, end, expected] in self.tests:
+            actual = has_route_bfs(self.graph, start, end)
+            assert actual == expected
 
 if __name__ == "__main__":
 	unittest.main()
