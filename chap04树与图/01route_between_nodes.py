@@ -48,13 +48,16 @@ def has_route_bfs(graph, node_a, node_b):
                 deque_1.append(child)
     return False
 
-def has_route_dfs(graph, node_a, node_b, visited=set()):
+def has_route_dfs(graph, node_a, node_b, visited=None):
+    if visited is None:
+        visited = set()
     if node_a == node_b:
         return True
-
+    visited.add(node_a)
     children = graph[node_a]
-    for child in children:
-        if has_route_dfs(graph, child, node_b):
+    true_children = [child for child in children if child not in visited]
+    for child in true_children:
+        if has_route_dfs(graph, child, node_b, visited):
             return True
     return False
 
