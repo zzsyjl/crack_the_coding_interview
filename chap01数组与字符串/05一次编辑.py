@@ -22,7 +22,7 @@ def is_one_edit(string1, string2):
     else:
         for i in range(len(string1)):
             if string1[i] != string2[i]:
-                return string1[:i]+string1[i+1:] == string2[:i]+string2[i+1:]
+                return string1[i+1:] == string2[i+1:]
         return True
 
 class Test(unittest.TestCase):
