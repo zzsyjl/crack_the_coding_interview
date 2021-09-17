@@ -12,6 +12,12 @@ def is_permutation(string1, string2):
     string2_sorted = sorted(list(string2))
     return string1_sorted == string2_sorted
 
+def is_permutation_set(string1, string2):
+    string1_sorted = set(list(string1))
+    string2_sorted = set(list(string2))
+    return string1_sorted == string2_sorted
+
+
 class Test(unittest.TestCase):
     test_cases = [
         (('abcd', 'dbca'), True),
@@ -23,7 +29,8 @@ class Test(unittest.TestCase):
         (('', 'asd'), False)
     ]
     test_funcs = [
-        is_permutation
+        is_permutation,
+        is_permutation_set
     ]
 
     def test_method(self):
